@@ -8,7 +8,7 @@ AnimatorController:
   m_Name: Player_Controller
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Blend
+  - m_Name: Animation
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -16,7 +16,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: speed
+    m_Name: Player_Blend_Tree
     m_StateMachine: {fileID: 1107890184892683242}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -186,7 +186,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: Blend
+  m_BlendParameter: Animation
   m_BlendParameterY: Blend
   m_MinThreshold: -7
   m_MaxThreshold: 11
@@ -249,7 +249,7 @@ AnimatorStateMachine:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: speed
+  m_Name: Player_Blend_Tree
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102859395328166024}
