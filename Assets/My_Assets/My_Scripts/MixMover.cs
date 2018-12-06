@@ -43,7 +43,7 @@ public class MixMover : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        
         speed = Input.GetAxis("Vertical");
         direction = Input.GetAxis("Horizontal");
 
