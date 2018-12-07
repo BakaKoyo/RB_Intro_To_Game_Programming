@@ -4,12 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Camera_Player
-<<<<<<< HEAD
-=======
-  - Enemy_Ghost
-  - Final_Boss
->>>>>>> origin/master
+  - Enemy_Manager_Tag
+  - Game_Manager_Tag
+  - Player_Prefab_Tag
+  - Enemy_Ghost_Prefab_Tag
+  - Enemy_Boss_Ghost_Prefab_Tag
+  - _Manager_Scripts_Prefab_Tag
+  - Spawn_Collider_Prefab_Tag
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - 
   - 
   - 
   - 

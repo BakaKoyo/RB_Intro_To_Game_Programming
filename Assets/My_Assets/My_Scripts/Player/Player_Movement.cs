@@ -93,12 +93,12 @@ public class Player_Movement : MonoBehaviour {
 		
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.forward * Player_WalkSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.forward * Player_WalkSpeed * Time.deltaTime, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.back * Player_WalkSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.back * Player_WalkSpeed * Time.deltaTime, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.A))
