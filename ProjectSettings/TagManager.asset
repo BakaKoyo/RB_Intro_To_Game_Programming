@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Camera_Player
+<<<<<<< HEAD
+=======
+  - Enemy_Ghost
+  - Final_Boss
+>>>>>>> origin/master
   layers:
   - Default
   - TransparentFX
