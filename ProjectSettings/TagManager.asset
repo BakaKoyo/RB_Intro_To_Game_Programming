@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Camera_Player
+  - Enemy_Ghost
+  - Final_Boss
   layers:
   - Default
   - TransparentFX

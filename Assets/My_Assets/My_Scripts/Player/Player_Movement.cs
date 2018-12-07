@@ -4,11 +4,32 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour {
 
-    #region [ Private ]
+
+    #region [ Public Variables ] 
+
+    #endregion
+
+
+
+    #region [ Private Variables ]
+
+
+    #region [ Non-Tweekable Variables ]
 
     /* Player Animation */
     private Animator _Anim_Player;
 
+    #endregion
+
+
+    #region [ Tweekable Variables ]
+
+    private float Player_WalkSpeed = 5.0f;
+    
+
+    #endregion
+
+    #region [ Enums ]
 
     #region [ Player Animation ]
 
@@ -16,12 +37,38 @@ public class Player_Movement : MonoBehaviour {
     [SerializeField]
     private enum PlayerAnimation
     {
-
+        Dying,
+        Injured_Walk_3,
+        Injured_Walk_2,
+        Injured_Walk,
+        Injured_Walk_Backwards,
+        Backwards_Walk_Sneak,
+        Backwards_Walk,
+        Normal_Idle,
+        Normal_Idle_Looking,
+        Sitting_Idle,
+        Normal_Walk,
+        Normal_Walk_Left_Strafe,
+        Normal_Walk_Right_Strafe,
+        Crouched_Walk,
+        Sneak_Walk,
+        Sneak_Walk_Strafe,
+        Crouched_Walk_Sneak,
+        Walk_Stop,
     }
 
+
+
+
     #endregion
 
     #endregion
+
+
+
+    #endregion
+
+
 
 
 
@@ -41,7 +88,28 @@ public class Player_Movement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
-	}
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.forward * Player_WalkSpeed * Time.deltaTime, Space.World);
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.back * Player_WalkSpeed * Time.deltaTime, Space.World);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(Vector3.up * -Player_WalkSpeed, Space.World);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(Vector3.up * Player_WalkSpeed, Space.World);
+        }
+
+    }
 }
