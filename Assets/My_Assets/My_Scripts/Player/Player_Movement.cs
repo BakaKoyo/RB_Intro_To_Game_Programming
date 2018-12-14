@@ -45,7 +45,7 @@ public class Player_Movement : MonoBehaviour {
     /* Player Flashlight */
     [SerializeField]
     private GameObject _Player_Cam_Light;
-    private bool _Player_IsCamOn = true; 
+    private bool _Player_IsCamOn = false; 
     #endregion
 
 
@@ -211,8 +211,10 @@ public class Player_Movement : MonoBehaviour {
 
                 #endregion
 
+
         }
         #endregion
+
 
         #region [ Player Action ]
 
@@ -237,11 +239,12 @@ public class Player_Movement : MonoBehaviour {
 
         #region [ Camera ]
 
-        /* Camera Controls */
+        /* Camera Controls
         Vector3 _Mouse = new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
         _Mouse.Normalize();
         _Player_Camera.Rotate(_Mouse.x, 0.0f, 0.0f, Space.Self);
         _Player_Camera.Rotate(0.0f, _Mouse.y * 5.0f, 0.0f, Space.World);
+        */
 
         /* Camera Flashlight */
         if (Input.GetKeyDown(_Key_Flashlight))

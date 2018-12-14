@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Spawn_Trigger_Collision : MonoBehaviour {
 
+
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		
+
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+
+
+
 	}
 }
