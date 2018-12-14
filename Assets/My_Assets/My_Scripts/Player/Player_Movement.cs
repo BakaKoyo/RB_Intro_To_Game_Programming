@@ -30,6 +30,7 @@ public class Player_Movement : MonoBehaviour {
     private KeyCode _Key_Sneak = KeyCode.LeftShift;
     private KeyCode _Key_Crouch = KeyCode.LeftControl;
     private KeyCode _Key_Run = KeyCode.LeftAlt;
+    private KeyCode _Key_Flashlight = KeyCode.F;
 
     /* Player Jumping */
     [SerializeField]
@@ -37,6 +38,14 @@ public class Player_Movement : MonoBehaviour {
     [SerializeField]
     private float _Player_Gravity;
 
+    /* Player's Camera */
+    private Transform _Player_Camera;
+    private Camera _Cam;
+
+    /* Player Flashlight */
+    [SerializeField]
+    private GameObject _Player_Cam_Light;
+    private bool _Player_IsCamOn = true; 
     #endregion
 
 
@@ -63,15 +72,42 @@ public class Player_Movement : MonoBehaviour {
     {
 
         /* 
-        Cehck if there is an Rigidbody component
+        Check if there is an Rigidbody component
             if it !=null get the rigidbody 
             else show a debug error 
         */
         if (GetComponent<Rigidbody>() != null) _Player_Rigidbody = GetComponent<Rigidbody>();
-        else Debug.LogError(" No Rigidbody found ");
+        else Debug.LogError(" No Rigidbody found! ");
 
-        _Player_Rigidbody = GetComponent<Rigidbody>();
+        /* 
+        Check if theres a Camera child of the prefab  
+            if it != null get Child Camera
+            else show a debug error 
+        */
+        if (GetComponentInChildren<Camera>() != null) _Cam = GetComponentInChildren<Camera>();
+        else Debug.LogError(" No Camera found as the child component of this prefab! ");
 
+        /*
+        Check if theres a assigned Camera on the variable "_Cam" 
+            if it != to null assign "_Cam" to "_Player_Camera"
+            else show a debug error
+        */
+        if (_Cam != null) _Player_Camera = _Cam.transform;
+        else Debug.LogError(" Missing Camera to assign to Player Camera! ");
+
+        /*
+        Checks if theres a Flashlight Gameobject on the player
+            if it != to null then do default settings on the Flashlight
+            else Show a debug error
+        */
+        if (_Player_Cam_Light != null) _Player_Cam_Light.SetActive(_Player_IsCamOn);
+        else Debug.LogError(" Missing Flashlight Gameobject! ");
+
+
+        /* Locks the Cursor on the center of the screen */
+        Cursor.lockState = CursorLockMode.Locked;
+
+  
     }
 	
 	// Update is called once per frame
@@ -178,9 +214,9 @@ public class Player_Movement : MonoBehaviour {
         }
         #endregion
 
-
         #region [ Player Action ]
 
+        /* Jump & Running */
         if (Input.GetKeyDown(_Key_Jump))
         {
             _Player_Rigidbody.velocity = Vector3.up * _Player_Gravity;
@@ -194,6 +230,29 @@ public class Player_Movement : MonoBehaviour {
         if (Input.GetKey(_Key_Run) && Input.GetKey(_Key_Backward))
         {
             transform.Translate(Vector3.back * _Player_RunSpeed * Time.deltaTime, Space.Self);
+        }
+
+        #endregion
+
+
+        #region [ Camera ]
+
+        /* Camera Controls */
+        Vector3 _Mouse = new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+        _Mouse.Normalize();
+        _Player_Camera.Rotate(_Mouse.x, 0.0f, 0.0f, Space.Self);
+        _Player_Camera.Rotate(0.0f, _Mouse.y * 5.0f, 0.0f, Space.World);
+
+        /* Camera Flashlight */
+        if (Input.GetKeyDown(_Key_Flashlight))
+        {
+            /* Toggle Flashlight */
+            _Player_IsCamOn = !_Player_IsCamOn;
+
+            /* On or Off */
+            if (_Player_IsCamOn) _Player_Cam_Light.SetActive(true);
+            else _Player_Cam_Light.SetActive(false);
+
         }
 
         #endregion
