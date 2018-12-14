@@ -26,11 +26,10 @@ public class Player_Movement : MonoBehaviour {
     private KeyCode _Key_Backward = KeyCode.S;
     private KeyCode _Key_Left = KeyCode.A;
     private KeyCode _Key_Right = KeyCode.D;
-    private KeyCode _Key_LookLeft = KeyCode.Q;
-    private KeyCode _Key_LookRight = KeyCode.E;
     private KeyCode _Key_Jump = KeyCode.Space;
     private KeyCode _Key_Sneak = KeyCode.LeftShift;
     private KeyCode _Key_Crouch = KeyCode.LeftControl;
+    private KeyCode _Key_Run = KeyCode.LeftAlt;
 
     /* Player Jumping */
     [SerializeField]
@@ -46,6 +45,8 @@ public class Player_Movement : MonoBehaviour {
     /* Player's Movement Variables */
     [SerializeField]
     private float _Player_WalkSpeed;
+    [SerializeField]
+    private float _Player_RunSpeed;
     [SerializeField]
     private float _Player_CrouchedSpeed;
     [SerializeField]
@@ -94,7 +95,7 @@ public class Player_Movement : MonoBehaviour {
                 }
                 else _str_PlayerMoveStatus = "Idle";
 
-                if (Input.GetKey(_Key_Crouch) || Input.GetKey(_Key_Sneak)) _str_PlayerMoveStatus = "Crouching & Sneakning";
+                if  (Input.GetKey(_Key_Sneak)) _str_PlayerMoveStatus = "Sneakning";
 
                 break;
 
@@ -109,26 +110,26 @@ public class Player_Movement : MonoBehaviour {
                 /* Forwards and Backwards */
                 if (Input.GetKey(_Key_Forward))
                 {
-                    transform.Translate(Vector3.forward * _Player_WalkSpeed * Time.deltaTime);
+                    transform.Translate(Vector3.forward * _Player_WalkSpeed * Time.deltaTime, Space.Self);
                 }
                 if (Input.GetKey(_Key_Backward))
                 {
-                    transform.Translate(Vector3.back * _Player_WalkSpeed / 2.0f * Time.deltaTime);
+                    transform.Translate(Vector3.back * _Player_WalkSpeed / 2.0f * Time.deltaTime, Space.Self);
                 }
 
                 /* Left and Right */
                 if (Input.GetKey(_Key_Left))
                 {
-                    transform.Rotate(Vector3.down * _Player_RotateSpeed * Time.deltaTime);
+                    transform.Rotate(Vector3.down * _Player_RotateSpeed * Time.deltaTime, Space.Self);
                 }
                 if (Input.GetKey(_Key_Right))
                 {
-                    transform.Rotate(Vector3.up * _Player_RotateSpeed * Time.deltaTime);
+                    transform.Rotate(Vector3.up * _Player_RotateSpeed * Time.deltaTime, Space.Self);
                 }
 
 
                 /* Other Player Movement */
-                if (Input.GetKey(_Key_Crouch) || (Input.GetKey(_Key_Sneak))) _str_PlayerMoveStatus = "Crouching & Sneakning";
+                if (Input.GetKey(_Key_Sneak)) _str_PlayerMoveStatus = "Sneakning";
 
 
                 /* Return to idle if the player has not touch a key */
@@ -138,37 +139,32 @@ public class Player_Movement : MonoBehaviour {
 
             #endregion
 
+
+
             #region [ Crouching & Sneakning ]
 
-            case ("Crouching & Sneakning"):
+            case ("Sneakning"):
 
                 /* Forwards and Backwards */
-                if (Input.GetKey(_Key_Forward) && Input.GetKey(_Key_Crouch))
+                if (Input.GetKey(_Key_Forward) && Input.GetKey(_Key_Sneak))
                 {
-                    transform.Translate(Vector3.forward * _Player_CrouchedSpeed * Time.deltaTime);
-                }
-                else if (Input.GetKey(_Key_Forward) && Input.GetKey(_Key_Sneak))
-                {
-                    transform.Translate(Vector3.forward * _Player_CrouchedSpeed * Time.deltaTime);
-                }
-                else if (Input.GetKey(_Key_Forward) && Input.GetKey(_Key_Crouch) && Input.GetKey(_Key_Sneak))
-                {
-                    transform.Translate(Vector3.forward * _Player_CrouchedSpeed * Time.deltaTime);
+                    transform.Translate(Vector3.forward * _Player_CrouchedSpeed * Time.deltaTime, Space.Self);
                 }
 
                 if (Input.GetKey(_Key_Backward) && Input.GetKey(_Key_Sneak))
                 {
-                    transform.Translate(Vector3.back * _Player_CrouchedSpeed / 2.0f * Time.deltaTime);
+                    transform.Translate(Vector3.back * _Player_CrouchedSpeed * Time.deltaTime, Space.Self);
                 }
 
                 /* Left and Right */
+  
                 if (Input.GetKey(_Key_Left) && Input.GetKey(_Key_Sneak))
                 {
-                    transform.Rotate(Vector3.down * _Player_RotateSpeed * Time.deltaTime);
+                    transform.Rotate(Vector3.down * _Player_RotateSpeed * Time.deltaTime, Space.Self);
                 }
                 if (Input.GetKey(_Key_Right) && Input.GetKey(_Key_Sneak))
                 {
-                    transform.Rotate(Vector3.up * _Player_RotateSpeed * Time.deltaTime);
+                    transform.Rotate(Vector3.up * _Player_RotateSpeed * Time.deltaTime, Space.Self);
                 }
 
                 /* Return to idle if the player has not touch a key */
@@ -182,11 +178,25 @@ public class Player_Movement : MonoBehaviour {
         }
         #endregion
 
-        if (Input.GetKey(KeyCode.Space))
+
+        #region [ Player Action ]
+
+        if (Input.GetKeyDown(_Key_Jump))
         {
             _Player_Rigidbody.velocity = Vector3.up * _Player_Gravity;
         }
-       
+
+        if (Input.GetKey(_Key_Run) && Input.GetKey(_Key_Forward)) 
+        {
+            transform.Translate(Vector3.forward * _Player_RunSpeed * Time.deltaTime, Space.Self);
+        }
+
+        if (Input.GetKey(_Key_Run) && Input.GetKey(_Key_Backward))
+        {
+            transform.Translate(Vector3.back * _Player_RunSpeed * Time.deltaTime, Space.Self);
+        }
+
+        #endregion
 
     }
 }

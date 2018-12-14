@@ -30,10 +30,10 @@ public class Player_Animations : MonoBehaviour {
     private float _Anim_Player_Normal_Walk_Right = 5.0f;
     private float _Anim_Player_Crouched_Walk = 6.0f;
     private float _Anim_Player_Sneak_Walk = 7.0f;
-    private float _Anim_Player_Sneak_Walk_Strafe_Left = 8.0f;
-    private float _Anim_Player_Sneak_Walk_Strafe_Right = 9.0f;
+    private float _Anim_Player_Running_Backwards = 8.0f;
+    private float _Anim_Player_Running_Forwards = 9.0f;
     private float _Anim_Player_Crouched_Walk_Sneak = 10.0f;
-    private float _Anim_Player_Walk_Stop = 11.0f;
+    private float _Anim_Player_Jump = 11.0f;
 
     /* Keybinds */
     private KeyCode _Key_Forward = KeyCode.W;
@@ -43,6 +43,7 @@ public class Player_Animations : MonoBehaviour {
     private KeyCode _Key_LookLeft = KeyCode.Q;
     private KeyCode _Key_LookRight = KeyCode.E;
     private KeyCode _Key_Jump = KeyCode.Space;
+    private KeyCode _Key_Run = KeyCode.LeftAlt;
     private KeyCode _Key_Sneak = KeyCode.LeftShift;
     private KeyCode _Key_Crouch = KeyCode.LeftControl;
 
@@ -133,39 +134,24 @@ public class Player_Animations : MonoBehaviour {
 
             #endregion
 
+
+
             #region [ Crouching & Sneakning ]
 
             case ("Crouching & Sneakning"):
 
                 /* Forwards and Backwards */
-                if (Input.GetKey(_Key_Forward) && Input.GetKey(_Key_Crouch))
-                {
-                    _Animator_Player.SetFloat("Animation", _Anim_Player_Crouched_Walk);
-                }
-                else if (Input.GetKey(_Key_Forward) && Input.GetKey(_Key_Sneak))
+
+                if (Input.GetKey(_Key_Forward) && Input.GetKey(_Key_Sneak))
                 {
                     _Animator_Player.SetFloat("Animation", _Anim_Player_Sneak_Walk);
                 }
-                else if (Input.GetKey(_Key_Forward) && Input.GetKey(_Key_Crouch) && Input.GetKey(_Key_Sneak))
-                {
-                    _Animator_Player.SetFloat("Animation", _Anim_Player_Crouched_Walk_Sneak);
-                }
-
                 if (Input.GetKey(_Key_Backward) && Input.GetKey(_Key_Sneak))
                 {
                     _Animator_Player.SetFloat("Animation", _Anim_Player_Backwards_Walk_Sneak);
                 }
 
-                /* Left and Right */
-                if (Input.GetKey(_Key_Left) && Input.GetKey(_Key_Sneak))
-                {
-                    _Animator_Player.SetFloat("Animation", _Anim_Player_Sneak_Walk_Strafe_Left);
-                }
-                if (Input.GetKey(_Key_Right) && Input.GetKey(_Key_Sneak))
-                {
-                    _Animator_Player.SetFloat("Animation", _Anim_Player_Sneak_Walk_Strafe_Right);
-                }
-
+ 
                 /* Return to idle if the player has not touch a key */
                 _str_PlayerMoveStatus = "Idle";
 
@@ -175,6 +161,26 @@ public class Player_Animations : MonoBehaviour {
                 #endregion
 
         }
+
+        #endregion
+
+        #region [ Player Action ]
+
+        if (Input.GetKey(_Key_Jump))
+        {
+            _Animator_Player.SetFloat("Animation", _Anim_Player_Jump);
+        }
+
+        if (Input.GetKey(_Key_Run) && Input.GetKey(_Key_Forward))
+        {
+            _Animator_Player.SetFloat("Animation", _Anim_Player_Running_Forwards);
+        }
+
+        if (Input.GetKey(_Key_Run) && Input.GetKey(_Key_Backward))
+        {
+            _Animator_Player.SetFloat("Animation", _Anim_Player_Running_Backwards);
+        }
+
         #endregion
 
     }
