@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 4364630678422388}
   - component: {fileID: 95260422969469156}
   - component: {fileID: 114026895519883510}
-  - component: {fileID: 136426775259295554}
+  - component: {fileID: 136808031819475088}
   m_Layer: 0
   m_Name: aj
   m_TagString: Untagged
@@ -1060,6 +1060,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1658704479678200
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4005503668674440}
+  - component: {fileID: 108805262676815370}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1692143064601136
 GameObject:
   m_ObjectHideFlags: 1
@@ -1370,6 +1386,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4005503668674440
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658704479678200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.304, y: 1.111, z: 2.789}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4529085079657790}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4020014098908904
 Transform:
   m_ObjectHideFlags: 1
@@ -1984,13 +2013,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1070492572832716}
-  m_LocalRotation: {x: 0.18839975, y: -0, z: -0, w: 0.9820925}
-  m_LocalPosition: {x: -0.03099823, y: 1.1959991, z: -2.1329994}
+  m_LocalRotation: {x: 0.11557311, y: -0.08111005, z: -0.014936583, w: 0.9898692}
+  m_LocalPosition: {x: 0.803, y: 0.852, z: -1.014}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4005503668674440}
   m_Father: {fileID: 4650015994191164}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 21.719002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.084001, y: -9.695001, z: -2.8430002}
 --- !u!4 &4532609668852686
 Transform:
   m_ObjectHideFlags: 1
@@ -2099,15 +2129,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1969978238465422}
-  m_LocalRotation: {x: -0, y: 0.803458, z: -0, w: 0.5953615}
-  m_LocalPosition: {x: 24.153, y: 18.46, z: 38.36}
+  m_LocalRotation: {x: -0, y: 0.8322294, z: -0, w: 0.55443156}
+  m_LocalPosition: {x: -167.14209, y: -12.615, z: 37.65815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4529085079657790}
   - {fileID: 4364630678422388}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 106.923004, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 112.657005, z: 0}
 --- !u!4 &4655033745369304
 Transform:
   m_ObjectHideFlags: 1
@@ -2639,8 +2669,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.01
+  far clip plane: 300
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -2804,7 +2834,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!81 &81407875904889926
 AudioListener:
@@ -2842,7 +2872,7 @@ Light:
   m_Type: 0
   m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_Intensity: 20
-  m_Range: 30
+  m_Range: 10
   m_SpotAngle: 70
   m_CookieSize: 10
   m_Shadows:
@@ -2860,7 +2890,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2879,7 +2909,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.8632076, a: 1}
   m_Intensity: 10
-  m_Range: 15
+  m_Range: 5
   m_SpotAngle: 53
   m_CookieSize: 10
   m_Shadows:
@@ -2897,7 +2927,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0.5
@@ -2916,7 +2946,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.8632076, a: 1}
   m_Intensity: 5
-  m_Range: 7.5
+  m_Range: 2.5
   m_SpotAngle: 28
   m_CookieSize: 10
   m_Shadows:
@@ -2934,10 +2964,47 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0.5
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!108 &108805262676815370
+Light:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658704479678200}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2
+  m_Range: 10
+  m_SpotAngle: 145
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -2971,7 +3038,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -3028,11 +3095,12 @@ MonoBehaviour:
   Player_Lives: 3
   _Player_Rigidbody: {fileID: 54761584707338264}
   _Player_Gravity: 3
+  _Player_Cam_Light: {fileID: 1658704479678200}
   _Player_WalkSpeed: 3
   _Player_RunSpeed: 5
   _Player_CrouchedSpeed: 3
   _Player_RotateSpeed: 150
---- !u!136 &136426775259295554
+--- !u!136 &136808031819475088
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
