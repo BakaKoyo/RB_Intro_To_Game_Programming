@@ -43,7 +43,7 @@ public class Player_Animations : MonoBehaviour {
     private KeyCode _Key_LookLeft = KeyCode.Q;
     private KeyCode _Key_LookRight = KeyCode.E;
     private KeyCode _Key_Jump = KeyCode.Space;
-    private KeyCode _Key_Run = KeyCode.LeftAlt;
+    private KeyCode _Key_Run = KeyCode.CapsLock;
     private KeyCode _Key_Sneak = KeyCode.LeftShift;
     private KeyCode _Key_Crouch = KeyCode.LeftControl;
 

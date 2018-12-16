@@ -29,7 +29,7 @@ public class Player_Movement : MonoBehaviour {
     private KeyCode _Key_Jump = KeyCode.Space;
     private KeyCode _Key_Sneak = KeyCode.LeftShift;
     private KeyCode _Key_Crouch = KeyCode.LeftControl;
-    private KeyCode _Key_Run = KeyCode.LeftAlt;
+    private KeyCode _Key_Run = KeyCode.CapsLock;
     private KeyCode _Key_Flashlight = KeyCode.F;
 
     /* Player Jumping */
@@ -156,11 +156,11 @@ public class Player_Movement : MonoBehaviour {
                 /* Left and Right */
                 if (Input.GetKey(_Key_Left))
                 {
-                    transform.Rotate(Vector3.down * _Player_RotateSpeed * Time.deltaTime, Space.Self);
+                    transform.Rotate(Vector3.down * _Player_RotateSpeed * Time.deltaTime, Space.World);
                 }
                 if (Input.GetKey(_Key_Right))
                 {
-                    transform.Rotate(Vector3.up * _Player_RotateSpeed * Time.deltaTime, Space.Self);
+                    transform.Rotate(Vector3.up * _Player_RotateSpeed * Time.deltaTime, Space.World);
                 }
 
 
@@ -196,11 +196,11 @@ public class Player_Movement : MonoBehaviour {
   
                 if (Input.GetKey(_Key_Left) && Input.GetKey(_Key_Sneak))
                 {
-                    transform.Rotate(Vector3.down * _Player_RotateSpeed * Time.deltaTime, Space.Self);
+                    transform.Rotate(Vector3.down * _Player_RotateSpeed * Time.deltaTime, Space.World);
                 }
                 if (Input.GetKey(_Key_Right) && Input.GetKey(_Key_Sneak))
                 {
-                    transform.Rotate(Vector3.up * _Player_RotateSpeed * Time.deltaTime, Space.Self);
+                    transform.Rotate(Vector3.up * _Player_RotateSpeed * Time.deltaTime, Space.World);
                 }
 
                 /* Return to idle if the player has not touch a key */
