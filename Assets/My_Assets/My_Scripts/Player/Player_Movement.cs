@@ -5,17 +5,6 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour {
 
 
-    #region [ Public Variables ] 
-
-    public int Player_Lives = 3;
-
-    #endregion
-
-
-
-    #region [ Private Variables ]
-
-
     #region [ Non-Tweekable Variables ]
 
     /* Player Movement Status */
@@ -27,9 +16,9 @@ public class Player_Movement : MonoBehaviour {
     private KeyCode _Key_Left = KeyCode.A;
     private KeyCode _Key_Right = KeyCode.D;
     private KeyCode _Key_Jump = KeyCode.Space;
-    private KeyCode _Key_Sneak = KeyCode.LeftShift;
+    private KeyCode _Key_Sneak = KeyCode.X;
     private KeyCode _Key_Crouch = KeyCode.LeftControl;
-    private KeyCode _Key_Run = KeyCode.CapsLock;
+    private KeyCode _Key_Run = KeyCode.LeftShift;
     private KeyCode _Key_Flashlight = KeyCode.F;
 
     /* Player Jumping */
@@ -63,8 +52,6 @@ public class Player_Movement : MonoBehaviour {
 
     #endregion
 
-
-    #endregion
 
 
     // Use this for initialization
@@ -245,6 +232,7 @@ public class Player_Movement : MonoBehaviour {
         _Player_Camera.Rotate(_Mouse.x, 0.0f, 0.0f, Space.Self);
         _Player_Camera.Rotate(0.0f, _Mouse.y * 5.0f, 0.0f, Space.World);
         */
+
 
         /* Camera Flashlight */
         if (Input.GetKeyDown(_Key_Flashlight))

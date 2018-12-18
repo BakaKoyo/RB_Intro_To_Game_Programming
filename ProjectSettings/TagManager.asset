@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - Player_Prefab_Tag
+  - Spawn_Collider_Prefab_Tag
+  - _Manager_Scripts_Prefab_Tag
+  - Enemy_Manager_Tag
+  - Enemy_Prefab_Tag
   layers:
   - Default
   - TransparentFX

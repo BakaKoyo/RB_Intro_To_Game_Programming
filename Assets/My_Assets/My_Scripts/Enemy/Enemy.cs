@@ -56,10 +56,7 @@ public class Enemy : MonoBehaviour {
         Inactive =-1,
         Idle,
         Chase,
-        Patrol,
-        Flee,
-        Attack,
-        Dead
+        Attack
 
     }
 
@@ -89,7 +86,23 @@ public class Enemy : MonoBehaviour {
 	void Update ()
     {
 
-     
+        if (bln_IsPlayerAlive)
+        {
+            switch (enemy_State)
+            {
+                case Enemy_State.Inactive:
+                    break;
+                case Enemy_State.Idle:
+                    break;
+                case Enemy_State.Chase:
+                    break;
+                case Enemy_State.Attack:
+                    break;
+                default:
+                    break;
+            }
+        }
+        
 
     }
 
