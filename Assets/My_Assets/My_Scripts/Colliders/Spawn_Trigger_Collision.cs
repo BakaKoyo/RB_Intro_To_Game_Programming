@@ -8,8 +8,6 @@ public class Spawn_Trigger_Collision : MonoBehaviour {
     public GameObject Enemy_Prefab;
     private GameObject NewGameObj = null;
 
-    private bool bln_IsInSpawnRange = false;
-
 	// Use this for initialization
 	void Start ()
     {
@@ -22,42 +20,19 @@ public class Spawn_Trigger_Collision : MonoBehaviour {
         if (NewGameObj == null)
         {
             NewGameObj = Instantiate(Enemy_Prefab);
-
-            NewGameObj.SetActive(false);
         }
         else Debug.LogError(" No Enemy Prefab! ");
 
-        
-
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-
-        if (bln_IsInSpawnRange) NewGameObj.SetActive(true);
-        else NewGameObj.SetActive(false);
-
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject.tag == "Player_Prefab_Tag")
-        {
-            bln_IsInSpawnRange = true;
-        }
-
+        NewGameObj.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player_Prefab_Tag")
-        {
-            bln_IsInSpawnRange = false;
-        }
-
+        NewGameObj.SetActive(false);
     }
 
 }

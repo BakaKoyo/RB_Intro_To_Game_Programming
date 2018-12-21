@@ -337,6 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4121335736268906}
   - component: {fileID: 54422455844351244}
+  - component: {fileID: 114991051480766662}
   m_Layer: 0
   m_Name: Enemy_
   m_TagString: Enemy_Prefab_Tag
@@ -1155,7 +1156,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403729803785756}
   m_LocalRotation: {x: -0, y: 0.8322294, z: -0, w: 0.55443156}
-  m_LocalPosition: {x: 24.157913, y: 18.785, z: 39.85815}
+  m_LocalPosition: {x: 98.813156, y: 18.464, z: 32.599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4237396841645912}
@@ -1298,7 +1299,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103938047486450}
   m_LocalRotation: {x: -0, y: -0.8322294, z: 0, w: 0.55443156}
-  m_LocalPosition: {x: -23.585033, y: -1.727829, z: 72.89042}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4801708386673416}
@@ -2039,6 +2040,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114991051480766662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403729803785756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36b3d7799608e742ae667a3bbd30c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target_Player: {fileID: 4650015994191164, guid: 6ae420667d86d924a9869ca2bd326632,
+    type: 2}
+  enemy_State: -1
 --- !u!136 &136979310364944022
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2067,7 +2082,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c9eae9660938a4b4398e0b6832002a51, type: 3}
+  - {fileID: 2100000, guid: 117a15ef3138fb746bf3318cad066773, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

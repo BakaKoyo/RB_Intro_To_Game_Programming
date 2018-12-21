@@ -17,12 +17,15 @@ public class Enemy : MonoBehaviour {
     private Vector3 Enemy_Direction = Vector3.zero;
 
     /* Boolean for the Player if it's Alive or not */
-    public bool bln_IsPlayerAlive;
+    private bool bln_IsPlayerAlive;
 
 
     /* Timer for enemy to be able to attack */
     private float flp_Enemy_Timer = 0.0f;
 
+    /* Target Position */
+    private Vector3 TargetPosition;
+    private Vector3 Direction = Vector3.zero;
 
     #endregion
 
@@ -62,8 +65,6 @@ public class Enemy : MonoBehaviour {
 
     #endregion
 
-
-
     [SerializeField]
     private Enemy_State enemy_State = Enemy_State.Inactive;
 
@@ -86,18 +87,53 @@ public class Enemy : MonoBehaviour {
 	void Update ()
     {
 
+        if (Target_Player != null)
+        {
+            TargetPosition = Target_Player.position - transform.position;
+            TargetPosition.Normalize();
+            Direction = TargetPosition;
+        }
+
         if (bln_IsPlayerAlive)
         {
             switch (enemy_State)
             {
                 case Enemy_State.Inactive:
+
+                    enemy_State = Enemy_State.Idle;
+
                     break;
+
+
                 case Enemy_State.Idle:
+
+                    if (Vector3.Distance(Target_Player.position, transform.position) 
+                        > Enemy_Detection_Range)
+                        enemy_State = Enemy_State.Chase;
+
                     break;
+
                 case Enemy_State.Chase:
-                    break;
+
+                    if (Vector3.Distance(Target_Player.position, transform.position)
+                        > Enemy_Detection_Range)
+                        MoveEnemies();
+                    else if (Vector3.Distance(Target_Player.position, transform.position)
+                        < Enemy_Attack_Range)
+                        enemy_State = Enemy_State.Attack;
+                    else enemy_State = Enemy_State.Idle;
+
+                        break;
+
                 case Enemy_State.Attack:
+
+                    if (Vector3.Distance(Target_Player.position, transform.position)
+                        < Enemy_Attack_Range)
+                        Attack_Player();
+                    else enemy_State = Enemy_State.Idle;
+
                     break;
+
                 default:
                     break;
             }
@@ -106,6 +142,15 @@ public class Enemy : MonoBehaviour {
 
     }
 
+    private void MoveEnemies()
+    {
+        Direction.Normalize();
+        transform.Translate(Direction * flp_EnemyMoveSpeed * Time.deltaTime);
+    }
+    
+    private void Attack_Player()
+    {
 
+    }
 
 }
