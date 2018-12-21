@@ -10,6 +10,7 @@ TagManager:
   - _Manager_Scripts_Prefab_Tag
   - Enemy_Manager_Tag
   - Enemy_Prefab_Tag
+  - Win_Tag
   layers:
   - Default
   - TransparentFX
